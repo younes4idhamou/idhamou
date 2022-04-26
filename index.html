@@ -21,7 +21,16 @@
             gesture-detector
         >
         <script>
-            for (var i = 1; i <3; i++) {
+            function getCount(foldername)
+            {
+             var myObject, f, filesCount;
+             myObject = new ActiveXObject("Scripting.FileSystemObject");
+             f = myObject.GetFolder(foldername);
+             filesCount = f.files.Count;
+             return filesCount
+             }
+            var a=getCount("/assets/markers")
+            for (var i = 1; i <=a; i++) {
                     document.write('<a-marker id="animated-marker" type="pattern" preset="custom" url="assets/markers/marker_'+i+'.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA"> <a-entity id="bowser-model" scale="0.11049858596298624 0.11049858596298624 0.11049858596298624" animation-mixer="loop: repeat" gltf-model="assets/asset/asset_'+i+'.glb" class="clickable" gesture-handler ></a-entity></a-marker>');
                 }
         </script>
