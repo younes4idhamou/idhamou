@@ -9,55 +9,22 @@
     </head>
 
     <body style="margin: 0; overflow: hidden;">
+    <a-scene markers_start vr-mode-ui="enabled: false" color-space="sRGB" renderer="gammaOutput: true" embedded arjs='debugUIEnabled: false; sourceType: webcam; patternRatio: 0.85; trackingMethod: best;'>
         <a-scene
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
             renderer="logarithmicDepthBuffer: true;"
             arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
             id="scene"
+
             embedded
             gesture-detector
         >
-
-
-            <a-marker
-                id="animated-marker"
-                type="pattern"
-                preset="custom"
-                url="assets/marker.patt"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
-            >
-                <a-entity
-                    id="bowser-model"
-                    scale="0.11049858596298624 0.11049858596298624 0.11049858596298624"
-                    animation-mixer="loop: repeat"
-                    gltf-model="assets/asset.glb"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
-            <a-marker
-                id="animated-marker"
-                type="pattern"
-                preset="custom"
-                url="assets/marker_1.patt"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
-            >
-                <a-entity
-                    id="bowser-model"
-                    scale="0.11049858596298624 0.11049858596298624 0.11049858596298624"
-                    animation-mixer="loop: repeat"
-                    gltf-model="assets/asset_1.glb"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
+        <script>
+            for (var i = 1; i <3; i++) {
+                    document.write('<a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker_'+i+'.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA"> <a-entity id="bowser-model" scale="0.11049858596298624 0.11049858596298624 0.11049858596298624" animation-mixer="loop: repeat" gltf-model="assets/asset_'+i+'.glb" class="clickable" gesture-handler ></a-entity></a-marker>');
+                }
+        </script>
             <a-entity camera></a-entity>
         </a-scene>
     </body>
