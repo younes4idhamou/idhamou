@@ -9,32 +9,46 @@
     </head>
 
     <body style="margin: 0; overflow: hidden;">
-    <a-scene markers_start vr-mode-ui="enabled: false" color-space="sRGB" renderer="gammaOutput: true" embedded arjs='debugUIEnabled: false; sourceType: webcam; patternRatio: 0.85; trackingMethod: best;'>
         <a-scene
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
             renderer="logarithmicDepthBuffer: true;"
             arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
             id="scene"
-
             embedded
             gesture-detector
         >
         <script>
-            function getCount(foldername)
-            {
-             var myObject, f, filesCount;
-             myObject = new ActiveXObject("Scripting.FileSystemObject");
-             f = myObject.GetFolder(foldername);
-             filesCount = f.files.Count;
-             return filesCount
-             }
-            var a=getCount("/assets/markers")
-            for (var i = 1; i <=a; i++) {
+            for (var i = 1; i <=2; i++) {
                     document.write('<a-marker id="animated-marker" type="pattern" preset="custom" url="assets/markers/marker_'+i+'.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA"> <a-entity id="bowser-model" scale="0.11049858596298624 0.11049858596298624 0.11049858596298624" animation-mixer="loop: repeat" gltf-model="assets/asset/asset_'+i+'.glb" class="clickable" gesture-handler ></a-entity></a-marker>');
                 }
         </script>
+            <a-marker
+                id="animated-marker"
+                type="pattern"
+                preset="custom"
+                url="assets/marker.patt"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                id="markerA"
+            >
+                <a-entity
+                    id="bowser-model"
+                    scale="0.11049858596298624 0.11049858596298624 0.11049858596298624"
+                    animation-mixer="loop: repeat"
+                    gltf-model="assets/asset.glb"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+            
             <a-entity camera></a-entity>
         </a-scene>
     </body>
+    <script>
+        for(var i = 0; i < 10; i++) {
+   document.body.innerHTML += '<div class="item"><div class="portfolio-item"><a href="img/portfolio-item-' + i + '.jpg" data-lightbox="image-' + i + '"><img src="img/portfolio-item-' + i + '.jpg"></a></div></div>'
+}
+    </script>
 </html>
